@@ -12,4 +12,5 @@ public enum Direccion {
     NOROESTE,
     ENROQUE_CORTO,
     ENROQUE_LARGO
+
 }

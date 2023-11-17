@@ -64,8 +64,8 @@ public class Consola {
 
     // Método para elegir una dirección
     public static Direccion elegirDireccion() {
-        // Implementa la lógica para elegir una dirección
-        return Direccion.NORTE; // Esto es un ejemplo, reemplázalo con la lógica adecuada
+
+        return Direccion.NORTE;
     }
 
     // Método para despedirse
