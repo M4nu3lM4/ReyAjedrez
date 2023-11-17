@@ -1,9 +1,9 @@
 package org.iesalandalus.programacion.modelo;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import org.iesaladanlus.programacion.reyajedrez.modelo.Color;
+import org.iesalandalus.programacion.modelo.ColorTest;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 class ColorTest {
