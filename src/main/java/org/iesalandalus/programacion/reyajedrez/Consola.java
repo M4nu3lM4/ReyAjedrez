@@ -1,7 +1,5 @@
 package org.iesalandalus.programacion.reyajedrez;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.awt.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 public class Consola {
@@ -55,7 +53,7 @@ public class Consola {
             opcion = elegirOpcionMenu();
         } while (opcion != 1 && opcion != 2);
 
-        return (opcion == 1) ? Color.BLANCO : Color.NEGRO;
+        return (opcion == 1) ? Color.WHITE : Color.BLACK;
     }
 
     // Método para mostrar el menú de direcciones
