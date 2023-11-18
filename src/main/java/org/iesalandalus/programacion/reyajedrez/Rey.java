@@ -5,6 +5,7 @@ import org.iesalandalus.programacion.reyajedrez.Color;
 import org.iesalandalus.programacion.reyajedrez.Direccion;
 import org.iesalandalus.programacion.reyajedrez.Posicion;
 import org.iesalandalus.programacion.reyajedrez.Rey;
+
 public class Rey {
     private Color color;
     private Posicion posicion;
