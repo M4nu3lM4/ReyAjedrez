@@ -1,5 +1,9 @@
 package org.iesalandalus.programacion.modelo;
 
+import org.iesalandalus.programacion.reyajedrez.Color;
+import org.iesalandalus.programacion.reyajedrez.Direccion;
+import org.iesalandalus.programacion.reyajedrez.Posicion;
+import org.iesalandalus.programacion.reyajedrez.Rey;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -36,7 +40,7 @@ class ReyTest {
 	{
 		// Test de constructor por defecto
 
-		reyBlanco = new Rey();
+		reyBlanco = new Rey(Color.NEGRO);
 		assertEquals(Color.BLANCO, reyBlanco.getColor(), COLOR_NO_ESPERADO);
 		assertEquals(new Posicion(1, 'e'), reyBlanco.getPosicion(), POSICION_NO_ESPERADA);
 
@@ -48,7 +52,7 @@ class ReyTest {
 		assertEquals(Color.NEGRO, reyNegro.getColor(), COLOR_NO_ESPERADO);
 		assertEquals(new Posicion(8, 'e'), reyNegro.getPosicion(), POSICION_NO_ESPERADA);
 
-		NullPointerException excepcion = assertThrows(NullPointerException.class, () -> { new Rey(null);}, EXCEPCION_NO_VALIDA);
+		NullPointerException excepcion = assertThrows(NullPointerException.class, () -> { new Rey((Color) null);}, EXCEPCION_NO_VALIDA);
 		assertEquals(MENSAJE_ERROR_COLOR_NULO, excepcion.getMessage(), MENSAJE_NO_CORRECTO);
 
 	}
@@ -59,9 +63,9 @@ class ReyTest {
 		NullPointerException excepcionNula;
 		OperationNotSupportedException excepcionMovimiento;
 
-		excepcionNula = assertThrows(NullPointerException.class, () -> { reyBlanco.mover(null);}, EXCEPCION_NO_VALIDA);
+		excepcionNula = assertThrows(NullPointerException.class, () -> { reyBlanco.mover((Direccion) null);}, EXCEPCION_NO_VALIDA);
 		assertEquals(MENSAJE_ERROR_DIRECCION_NULA, excepcionNula.getMessage(), MENSAJE_NO_CORRECTO);
-		excepcionNula = assertThrows(NullPointerException.class, () -> { reyNegro.mover(null);}, EXCEPCION_NO_VALIDA);
+		excepcionNula = assertThrows(NullPointerException.class, () -> { reyNegro.mover((Direccion) null);}, EXCEPCION_NO_VALIDA);
 		assertEquals(MENSAJE_ERROR_DIRECCION_NULA, excepcionNula.getMessage(), MENSAJE_NO_CORRECTO);
 
 		reyBlanco = new Rey(Color.BLANCO);

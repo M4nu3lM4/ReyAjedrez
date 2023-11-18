@@ -1,75 +1,68 @@
 package org.iesalandalus.programacion.reyajedrez;
-import java.awt.*;
-import java.util.InputMismatchException;
+import org.iesalandalus.programacion.reyajedrez.Color;
+import org.iesalandalus.programacion.reyajedrez.Direccion;
+import org.iesalandalus.programacion.reyajedrez.Posicion;
+import org.iesalandalus.programacion.reyajedrez.Rey;
 import java.util.Scanner;
-public class Consola {
-    private static Scanner scanner = new Scanner(System.in);
 
-    // Constructor privado para evitar instanciación
+public class Consola {
     private Consola() {
     }
 
-    // Método para mostrar el menú
     public static void mostrarMenu() {
-        System.out.println("----- Menú -----");
         System.out.println("1. Crear rey por defecto");
         System.out.println("2. Crear rey eligiendo el color");
         System.out.println("3. Mover");
         System.out.println("4. Salir");
     }
 
-    // Método para elegir una opción del menú
     public static int elegirOpcionMenu() {
-        int opcion = 0;
-        boolean opcionValida = false;
-
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
         do {
-            try {
-                System.out.print("Elige una opción: ");
-                opcion = scanner.nextInt();
-                scanner.nextLine(); // Consumir el salto de línea
-                if (opcion >= 1 && opcion <= 4) {
-                    opcionValida = true;
-                } else {
-                    System.out.println("Opción no válida. Inténtalo de nuevo.");
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("Por favor, introduce un número válido.");
-                scanner.nextLine(); // Limpiar el búfer del scanner
-            }
-        } while (!opcionValida);
-
+            System.out.println("Elige una opción:");
+            opcion = scanner.nextInt();
+        } while (opcion < 1 || opcion > 4);
         return opcion;
     }
 
-    // Método para elegir un color
-    public static Color elegirColor() {
+    public static Color elegirOpcion() {
+        Scanner scanner = new Scanner(System.in);
         int opcion;
         do {
             System.out.println("Elige un color:");
             System.out.println("1. Blanco");
             System.out.println("2. Negro");
-
-            opcion = elegirOpcionMenu();
-        } while (opcion != 1 && opcion != 2);
-
-        return (opcion == 1) ? Color.WHITE : Color.BLACK;
+            opcion = scanner.nextInt();
+        } while (opcion < 1 || opcion > 2);
+        return opcion == 1 ? Color.BLANCO : Color.NEGRO;
     }
 
-    // Método para mostrar el menú de direcciones
     public static void mostrarMenuDirecciones() {
-        System.out.println("----- Menú de Direcciones -----");
-        // Aquí puedes mostrar las direcciones disponibles (usando el enumerado Direccion)
+        System.out.println("1. NORTE");
+        System.out.println("2. NORESTE");
+        System.out.println("3. ESTE");
+        System.out.println("4. SURESTE");
+        System.out.println("5. SUR");
+        System.out.println("6. SUROESTE");
+        System.out.println("7. OESTE");
+        System.out.println("8. NOROESTE");
+        System.out.println("9. ENROQUE_CORTO");
+        System.out.println("10. ENROQUE_LARGO");
     }
 
-    // Método para elegir una dirección
     public static Direccion elegirDireccion() {
-
-        return Direccion.NORTE;
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+        do {
+            System.out.println("Elige una dirección:");
+            opcion = scanner.nextInt();
+        } while (opcion < 1 || opcion > 10);
+        // Aquí deberías devolver la dirección correspondiente a la opción elegida.
+        return null;
     }
 
-    // Método para despedirse
     public static void despedirse() {
-        System.out.println("¡Hasta luego!");
+        System.out.println("¡Gracias por usar nuestra aplicación! ¡Hasta la próxima!");
     }
 }

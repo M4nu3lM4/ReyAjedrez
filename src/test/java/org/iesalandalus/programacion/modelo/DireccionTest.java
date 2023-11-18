@@ -1,9 +1,13 @@
 package org.iesalandalus.programacion.modelo;
 
+import org.iesalandalus.programacion.reyajedrez.Direccion;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import org.iesalandalus.programacion.reyajedrez.Color;
+import org.iesalandalus.programacion.reyajedrez.Direccion;
+import org.iesalandalus.programacion.reyajedrez.Posicion;
+import org.iesalandalus.programacion.reyajedrez.Rey;
 
 class DireccionTest {
 	

@@ -1,27 +1,16 @@
 package org.iesalandalus.programacion.reyajedrez;
-import java.util.Objects;
-import javax.naming.OperationNotSupportedException;
-import java.awt.*;
-import java.util.InputMismatchException;
+import org.iesalandalus.programacion.reyajedrez.Color;
+import org.iesalandalus.programacion.reyajedrez.Direccion;
+import org.iesalandalus.programacion.reyajedrez.Posicion;
+import org.iesalandalus.programacion.reyajedrez.Rey;
 import java.util.Scanner;
-
+import javax.naming.OperationNotSupportedException;
+import java.util.Scanner;
 
 public class MainApp {
     private static Rey rey;
 
-    public static void main(String[] args) {
-        int opcion;
-
-        do {
-            Consola.mostrarMenu();
-            opcion = Consola.elegirOpcionMenu();
-            ejecutarOpcion(opcion);
-        } while (opcion != 4);
-
-        Consola.despedirse();
-    }
-
-    private static void ejecutarOpcion(int opcion) {
+    public static void ejecutarOpcion(int opcion) throws OperationNotSupportedException {
         switch (opcion) {
             case 1:
                 crearReyDefecto();
@@ -33,47 +22,47 @@ public class MainApp {
                 mover();
                 break;
             case 4:
-                // Salir, no hace falta hacer nada
+                mostrarRey();
                 break;
             default:
-                System.out.println("Opción no válida.");
+                Consola.despedirse();
+                break;
         }
     }
 
-    private static void crearReyDefecto() {
+    public static void crearReyDefecto() {
         rey = new Rey();
-        System.out.println("Se ha creado un rey por defecto.");
-        mostrarRey();
     }
 
-    private static void crearReyColor() {
-        Color color = Consola.elegirColor();
+    public static void crearReyColor() {
+        Color color = Consola.elegirOpcion();
         rey = new Rey(color);
-        System.out.println("Se ha creado un rey de color " + color + ".");
-        mostrarRey();
     }
 
-    private static void mover() {
-        if (rey != null) {
-            Consola.mostrarMenuDirecciones();
-            Direccion direccion = Consola.elegirDireccion();
+    public static void mover() throws OperationNotSupportedException {
+        Direccion direccion = Consola.elegirDireccion();
+        rey.mover(direccion);
+    }
 
+    public static void mostrarRey() {
+        if (rey == null) {
+            System.out.println("El rey no ha sido creado.");
+        } else {
+            System.out.println(rey);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+        do {
+            Consola.mostrarMenu();
+            opcion = Consola.elegirOpcionMenu();
             try {
-                rey.mover(direccion);
-                System.out.println("El rey se ha movido correctamente.");
-                mostrarRey();
+                ejecutarOpcion(opcion);
             } catch (OperationNotSupportedException e) {
-                System.out.println("Error: " + e.getMessage());
+                System.out.println(e.getMessage());
             }
-        } else {
-            System.out.println("Error: No se ha creado un rey.");
-        }
+        } while (opcion != 4);
     }
-
-    private static void mostrarRey() {
-        if (rey != null) {
-            System.out.println("Información del rey: " + rey);
-        } else {
-            System.out.println("No se ha creado un rey.");
-        }
-    }}
+}
